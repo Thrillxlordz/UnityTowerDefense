@@ -7,7 +7,7 @@ function OnEnable() {
 	StartCoroutine(AnimateText());
 }
 
-// animates this text
+// Animates this text
 function AnimateText() {
 	roundsText.text = "0";
 	var round : int = 0;

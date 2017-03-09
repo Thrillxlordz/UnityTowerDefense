@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+// This script is still in development, None of it is implemented yet
+
 private var dir : Vector3;
 public var impactEffect : GameObject;
 

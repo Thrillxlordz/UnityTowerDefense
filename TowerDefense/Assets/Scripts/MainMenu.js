@@ -10,6 +10,7 @@ public function Play() {
 	sceneFader.FadeTo(levelToLoad);
 }
 
+// Exits the application
 public function Quit() {
 	Debug.Log("Exiting...");
 	Application.Quit();
