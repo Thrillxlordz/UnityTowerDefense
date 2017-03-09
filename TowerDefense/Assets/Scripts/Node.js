@@ -4,8 +4,10 @@ import UnityEngine.EventSystems;
 public var hoverColor : Color;
 public var notEnoughMoneyColor : Color;
 public var positionOffset : Vector3;
-private var rend : Renderer;
-private var startColor : Color;
+@HideInInspector
+public var rend : Renderer;
+@HideInInspector
+public var startColor : Color;
 @HideInInspector
 public var turret : GameObject;
 @HideInInspector
@@ -64,6 +66,7 @@ function BuildTurret(blueprint : TurretBlueprint) {
 	Destroy(effect, 5f);
 }
 
+//Hover turret is on a node, but not created
 function HoverTurretOn(blueprint : TurretBlueprint) {
 	var _hoverTurret : GameObject = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
 	hoverTurret = _hoverTurret;
@@ -77,8 +80,9 @@ function HoverTurretOn(blueprint : TurretBlueprint) {
 	}
 }
 
-function HoverTurretOff() {
-	Destroy(hoverTurret);
+public function HoverTurretOff() {
+    Destroy(hoverTurret);
+
 }
 
 public function UpgradeTurret() {
@@ -121,14 +125,20 @@ function OnMouseEnter() {
 		return;
 	}
 	if (buildManager.HasMoney()) {
-		rend.material.color = hoverColor;
+	    rend.material.color = hoverColor;
+
 	} else {
 		rend.material.color = notEnoughMoneyColor;
 	}
 	if (turret == null) {
-		HoverTurretOn(buildManager.GetTurretToBuild());
+        
+	    HoverTurretOn(buildManager.GetTurretToBuild());
+	    buildManager.setHoveredNode(this);
+	    
 	}
 }
+
+
 
 function OnMouseExit() {
 	rend.material.color = startColor;

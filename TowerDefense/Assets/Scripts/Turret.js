@@ -41,6 +41,7 @@ private var gameManager : GameManager;
 public var targetMode : boolean[];
 // target modes: 0) first -- 1) last -- 2) closest -- 3) weakest -- 4) strongest
 
+
 function Start() {
     if (targetMode.Length == 0) {
         targetMode = new boolean[5];

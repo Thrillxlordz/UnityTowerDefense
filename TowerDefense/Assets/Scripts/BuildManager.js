@@ -17,6 +17,7 @@ private var turretToBuild : TurretBlueprint;
 public var selectedNode : Node;
 public var nodeUI : NodeUI;
 public var turretSettings : TurretSettings;
+public var hoveredNode : Node;
 
 public function HasMoney() : boolean {
 	return PlayerStats.Money >= turretToBuild.cost;
@@ -25,6 +26,27 @@ public function HasMoney() : boolean {
 public function CanBuild() : boolean {
 	return turretToBuild != null;
 }
+
+
+    function Update(){
+        
+            if (Input.GetMouseButtonDown(1)){
+                //right click has occured
+                
+                hoveredNode.HoverTurretOff();
+                hoveredNode.rend.material.color = hoveredNode.startColor;
+                
+                turretToBuild = null;
+                selectedNode = null;
+                
+                //Debug.Log("Rightmousebutton is down");
+            }
+    }
+
+    //Allows us to access the hovered node from the Node.js Script
+    public function setHoveredNode(node : Node){
+        hoveredNode = node;
+    }
 
 public function SelectNode(node : Node) {
 	if (selectedNode == node) {
@@ -62,6 +84,8 @@ public function SelectTurretToBuild(turret : TurretBlueprint) {
 	turretToBuild = turret;
 	DeselectNode();
 }
+
+
 
 public function GetTurretToBuild() : TurretBlueprint {
 	return turretToBuild;
