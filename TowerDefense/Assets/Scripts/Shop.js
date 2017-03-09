@@ -14,6 +14,7 @@ function Start() {
     buildManager = BuildManager.instance;
 }
 
+// Each of these functions gives the BuildManager script the selected turret
 public function SelectStandardTurret() {
 	buildManager.SelectTurretToBuild(standardTurret);
 }

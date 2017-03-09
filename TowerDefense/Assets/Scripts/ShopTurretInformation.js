@@ -21,12 +21,15 @@ function Start() {
     instance = this;
     gameManager = GameManager.instance;
     shop = Shop.instance;
+
+    // Gets the stats of every turret in the shop, and uses their stats to update the descriptive text about them
     var standardStats : float[] = shop.standardTurret.prefab.GetComponent(Turret).GetTurretStats();
     var bangMcShootyStats : float[] = shop.bangMcShootyTurret.prefab.GetComponent(Turret).GetTurretStats();
     var missileStats : float[] = shop.missileTurret.prefab.GetComponent(Turret).GetTurretStats();
     var freezeStats : float[] = shop.freezeTurret.prefab.GetComponent(Turret).GetTurretStats();
     var laserStats : float[] = shop.laserTurret.prefab.GetComponent(Turret).GetTurretStats();
 
+    // Updates the text about each turret
     informationPanel.GetChild(0).gameObject.GetComponent(UnityEngine.UI.Text).text = turretDescriptions[0] + "\n\nRange: " + standardStats[0] + "\n\nDamage: " + standardStats[1] + "\n\nFireRate: " + standardStats[4] + "/sec";
     informationPanel.GetChild(1).gameObject.GetComponent(UnityEngine.UI.Text).text = turretDescriptions[1] + "\n\nRange: " + bangMcShootyStats[0] + "\n\nDamage: " + bangMcShootyStats[1] + "\n\nFireRate: " + bangMcShootyStats[4] + "/sec";
     informationPanel.GetChild(2).gameObject.GetComponent(UnityEngine.UI.Text).text = turretDescriptions[2] + "\n\nRange: " + missileStats[0] + "\n\nDamage: " + (missileStats[1] + missileStats[2]) + "\n\nSplash Damage: " + missileStats[2] + "\n\nFireRate: " + missileStats[4] + "/sec";
@@ -35,31 +38,36 @@ function Start() {
 
 }
 
+// Activates the standard turret's info panel
 public function HoverStandardTurret() {
     informationPanel.gameObject.SetActive(true);
     informationPanel.GetChild(0).gameObject.SetActive(true);
 }
 
+// Activates the Bang McShooty turret's info panel
 public function HoverBangMcShootyTurret() {
     informationPanel.gameObject.SetActive(true);
     informationPanel.GetChild(1).gameObject.SetActive(true);
 }
 
+// Activates the missile turret's info panel
 public function HoverMissileTurret() {
     informationPanel.gameObject.SetActive(true);
     informationPanel.GetChild(2).gameObject.SetActive(true);
 }
 
+// Activates the freeze turret's info panel
 public function HoverFreezeTurret() {
     informationPanel.gameObject.SetActive(true);
     informationPanel.GetChild(3).gameObject.SetActive(true);
 }
-
+// Activates the laser turret's info panel
 public function HoverLaserTurret() {
     informationPanel.gameObject.SetActive(true);
     informationPanel.GetChild(4).gameObject.SetActive(true);
 }
 
+// Disables the info panel
 public function HoverOff() {
     informationPanel.gameObject.SetActive(false);
     for (var i = 0; i < informationPanel.childCount; i++) {

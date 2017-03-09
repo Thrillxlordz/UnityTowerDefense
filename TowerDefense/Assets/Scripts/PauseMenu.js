@@ -6,6 +6,7 @@ public var menuSceneName : String = "MainMenu";
 public var time : TimeSpeed;
 private var t : float = 1f;
 
+// If the game is not over, and the user presses "escape" or "p", pause the game
 function Update() {
 	if (GameManager.gameIsOver) {
 		return;
@@ -15,6 +16,7 @@ function Update() {
 	}
 }
 
+// Turns on the pause screen UI
 public function Toggle() {
 	ui.SetActive(!ui.activeSelf);
 	if (ui.activeSelf) {
@@ -29,12 +31,14 @@ public function Toggle() {
 	}
 }
 
+// Restarts the current scene
 public function Restart() {
 	Toggle();
 	time.NormalTime();
 	sceneFader.FadeTo(SceneManager.GetActiveScene().name);
 }
 
+// Takes the user to the menu
 public function Menu() {
 	Toggle();
 	time.NormalTime();

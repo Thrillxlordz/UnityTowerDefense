@@ -5,6 +5,7 @@ public var levelToLoad : String = "MainLevel";
 
 public var sceneFader : SceneFader;
 
+// Takes the player to the level select screen
 public function Play() {
 	sceneFader.FadeTo(levelToLoad);
 }

@@ -2,10 +2,12 @@
 
 public var roundsText : UnityEngine.UI.Text;
 
+// When this is enabled, animate its entry
 function OnEnable() {
 	StartCoroutine(AnimateText());
 }
 
+// animates this text
 function AnimateText() {
 	roundsText.text = "0";
 	var round : int = 0;

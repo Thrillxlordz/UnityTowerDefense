@@ -1,5 +1,5 @@
 ﻿@script RequireComponent(Enemy)
-
+// THIS IS WHERE I LEFT OFF ON ADDING NOTES TO THE SCRIPTS
 #pragma strict
 
 private var target : Transform;

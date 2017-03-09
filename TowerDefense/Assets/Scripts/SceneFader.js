@@ -5,14 +5,17 @@ import UnityEngine.SceneManagement;
 public var img : UnityEngine.UI.Image;
 public var curve : AnimationCurve;
 
+// Begin each scene with a fade in animation
 function Start() {
 	StartCoroutine(FadeIn());
 }
 
+// Called by any button that switches scenes
 public function FadeTo(scene : String) {
 	StartCoroutine(FadeOut(scene));
 }
 
+// Animates a fade in animation
 function FadeIn() : IEnumerator {
 	var t : float = 1f;
 
@@ -24,6 +27,7 @@ function FadeIn() : IEnumerator {
 	}
 }
 
+// animates a fade out animation
 function FadeOut(scene : String) : IEnumerator {
 	var t : float = 0f;
 
