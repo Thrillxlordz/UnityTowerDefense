@@ -35,6 +35,7 @@ public function OnMouseExit() {
 
 // Sends the player to the level attached to the button
 public function SelectLevel() {
+    SoundEffects.instance.ButtonClick();
 	var scene : String = (levelNumber < 10) ? ("Level0" + levelNumber) : ("Level" + levelNumber);
 	sceneFader.FadeTo(scene);
 	if (levelNumber >= 100) {

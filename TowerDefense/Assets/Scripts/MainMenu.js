@@ -16,11 +16,12 @@ function Start() {
 
 // Takes the player to the level select screen
 public function Play() {
-	sceneFader.FadeTo(levelToLoad);
+    sceneFader.FadeTo(levelToLoad);
 }
 
 // Exits the application
 public function Quit() {
-	Debug.Log("Exiting...");
+    Debug.Log("Exiting...");
+    SoundEffects.instance.ButtonClick();
 	Application.Quit();
 }
