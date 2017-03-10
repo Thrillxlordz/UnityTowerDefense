@@ -12,6 +12,7 @@ function Start() {
 
 // Called by any button that switches scenes
 public function FadeTo(scene : String) {
+    SoundEffects.instance.ButtonClick();
 	StartCoroutine(FadeOut(scene));
 }
 
@@ -29,6 +30,7 @@ function FadeIn() : IEnumerator {
 
 // animates a fade out animation
 function FadeOut(scene : String) : IEnumerator {
+   
 	var t : float = 0f;
 
 	while (t < 1f) {
