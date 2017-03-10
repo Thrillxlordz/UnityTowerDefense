@@ -4,5 +4,5 @@ public var moneyText : UnityEngine.UI.Text;
 
 // Displays the players money
 function Update () {
-		moneyText.text = "$" + PlayerStats.Money.ToString();
+    moneyText.text = "$" + PlayerStats.Money.ToString();
 }

@@ -10,15 +10,21 @@ public var maxY : float = 80f;
 public var minZ : float = -50f;
 public var maxZ : float = 50f;
 private var startPosition : Vector3;
+private static var thisCamera : Transform;
 
 function Start() {
-	startPosition = this.transform.position;
+    startPosition = this.transform.position;
+    thisCamera = this.transform;
+}
+
+function Awake() {
+    GameManager.gameIsOver = false;
 }
 
 function Update() {
     
     // If the game is over, the player can no longer control the camera, and the camera snaps back to its start position
-	if (GameManager.gameIsOver) {
+    if (GameManager.gameIsOver) {
 		this.transform.position = startPosition;
 		this.enabled = false;
 		return;
@@ -46,4 +52,8 @@ function Update() {
 	pos.y = Mathf.Clamp(pos.y, minY, maxY);
 	pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
 	transform.position = pos;
+}
+
+public static function Enable() {
+    thisCamera.GetComponent(CameraController).enabled = true;
 }

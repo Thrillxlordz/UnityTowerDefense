@@ -50,3 +50,10 @@ public function WinLevel() {
 	gameIsOver = true;
 	completeLevelUI.SetActive(true);
 }
+
+public function PlayOn() {
+    WaveSpawner.Enable();
+    CameraController.Enable();
+    completeLevelUI.SetActive(false);
+    gameIsOver = false;
+}
