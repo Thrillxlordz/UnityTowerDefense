@@ -14,6 +14,11 @@ function Start() {
 	Time.timeScale = 0f;
 }
 
+// Plays the button click for the time controller panel
+public function PlaySound() {
+    SoundEffects.instance.ButtonClick();
+}
+
 // Pauses the game
 public function Pause() {
 	pause.color.a = 1;
@@ -21,6 +26,7 @@ public function Pause() {
 	normalTime.color.a = 0;
 	doubleTime.color.a = 0;
 	Time.timeScale = 0f;
+	PlaySound();
 }
 
 // Sets the game to half time
@@ -30,6 +36,7 @@ public function HalfTime() {
 	normalTime.color.a = 0;
 	doubleTime.color.a = 0;
 	Time.timeScale = .5f;
+	PlaySound();
 }
 
 // Sets the game to normal time
@@ -39,6 +46,7 @@ public function NormalTime() {
 	normalTime.color.a = 1;
 	doubleTime.color.a = 0;
 	Time.timeScale = 1f;
+	PlaySound();
 }
 
 // Sets the game to double time
@@ -48,4 +56,5 @@ public function DoubleTime() {
 	normalTime.color.a = 0;
 	doubleTime.color.a = 1;
 	Time.timeScale = 2f;
+	PlaySound();
 }

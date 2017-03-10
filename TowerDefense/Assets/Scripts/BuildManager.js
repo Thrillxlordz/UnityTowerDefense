@@ -33,7 +33,6 @@ public function CanBuild() : boolean {
 function Update() {
     if (Input.GetMouseButtonDown(1)) {
         // Right click has occured
-        
         hoveredNode.HoverTurretOff();
         hoveredNode.rend.material.color = hoveredNode.startColor;
         

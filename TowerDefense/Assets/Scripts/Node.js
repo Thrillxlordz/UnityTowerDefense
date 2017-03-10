@@ -33,11 +33,18 @@ public function GetBuildPosition() : Vector3 {
 
 // Either selects the node if there is a turret already there, or builds a turret there
 function OnMouseDown() {
-	if (EventSystem.current.IsPointerOverGameObject()) {
+    /*
+    ONLY USE THIS IF YOU NEED TO SCREENSHOT THE LEVEL
+    
+    Debug.Log("Capturing");
+    Application.CaptureScreenshot("C:\\Users\\Nick\\Downloads\\Unity Coded Games\\UnityTowerDefense\\TowerDefense\\Assets\\LevelSelect\\_LevelImages\\Level01.png");
+	*/
+    if (EventSystem.current.IsPointerOverGameObject()) {
 		return;
 	}
 
-	if (turret != null) {
+    if (turret != null) {
+        SoundEffects.instance.ButtonClick();
 		buildManager.SelectNode(this);
 		return;
 	}
@@ -45,7 +52,7 @@ function OnMouseDown() {
 	if (!buildManager.CanBuild()) {
 		return;
 	}
-
+	SoundEffects.instance.ButtonClick();
 	BuildTurret(buildManager.GetTurretToBuild());
 }
 

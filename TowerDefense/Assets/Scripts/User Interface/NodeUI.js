@@ -48,12 +48,14 @@ public function Hide() {
 
 // Upgrades the turret on the node which the NodeUI is currently linked to
 public function Upgrade() {
+    SoundEffects.instance.ButtonClick();
 	target.UpgradeTurret();
 	BuildManager.instance.DeselectNode();
 }
 
 // Sells the turret on the node which the NodeUI is currently linked to
 public function Sell() {
+    SoundEffects.instance.ButtonClick();
 	target.SellTurret();
 	BuildManager.instance.DeselectNode();
 }

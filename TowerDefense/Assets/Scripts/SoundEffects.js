@@ -33,8 +33,8 @@ public function SetVolume(volumeLevel : float){
 
 }
 
-    private function PlaySound(audioSource : AudioSource){
-        if (!muted){
-            audioSource.Play();
-        }
+private function PlaySound(audioSource : AudioSource){
+    if (!muted){
+        audioSource.Play();
     }
+}

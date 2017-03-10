@@ -21,6 +21,7 @@ function Start() {
 
 // When the mouse enters this button, change the color
 public function OnMouseEnter() {
+    LevelSelectManager.instance.HoverNode(this);
 	if (levelNumber <= levelReached) {
 		rend.material.color = Color.gray;
 	}
@@ -28,6 +29,7 @@ public function OnMouseEnter() {
 
 // When the moves leaves this button, revert the color
 public function OnMouseExit() {
+    LevelSelectManager.instance.NoHover();
 	if (levelNumber <= levelReached) {
 		rend.material.color = Color.white;
 	}

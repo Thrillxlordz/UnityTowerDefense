@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+import UnityEngine.SceneManagement;
+
 public static var gameIsOver : boolean;
 public var gameOverUI : GameObject;
 public var completeLevelUI : GameObject;
@@ -42,6 +44,7 @@ function EndGame() {
 	time.NormalTime();
 	gameIsOver = true;
 	gameOverUI.SetActive(true);
+	UpdateRoundsRecord();
 }
 
 // Wins the level, activating the win level UI
@@ -49,6 +52,7 @@ public function WinLevel() {
 	time.NormalTime();
 	gameIsOver = true;
 	completeLevelUI.SetActive(true);
+	UpdateRoundsRecord();
 }
 
 public function PlayOn() {
@@ -56,4 +60,11 @@ public function PlayOn() {
     CameraController.Enable();
     completeLevelUI.SetActive(false);
     gameIsOver = false;
+}
+
+function UpdateRoundsRecord() {
+    var levelName : String = SceneManager.GetActiveScene().name;
+    if (PlayerStats.Rounds > PlayerPrefs.GetInt(levelName, 0)) {
+        PlayerPrefs.SetInt(levelName, PlayerStats.Rounds);
+    }
 }

@@ -16,6 +16,7 @@ function Awake() {
 
 // Continues playing the level, scaling up the difficulty
 public function PlayOn() {
+    SoundEffects.instance.ButtonClick();
     gameManager.PlayOn();
 }
 
