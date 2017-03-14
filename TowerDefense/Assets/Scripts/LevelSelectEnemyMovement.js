@@ -4,46 +4,42 @@
 
 private var target : Transform;
 private var wavepointIndex = 0;
-private var randomPath : int;
+private var waypoints : Transform[];
 private var enemy : Enemy;
 
-// This is the enemy movement for the level select screen. Basically just a hollow shell of the normal enemy movement
-
-// Gets the first waypoint destination, along with a random path to choose from
+// Accesses the enemy's Enemy script, and stores it. Also stores the first waypoint
 function Start() {
-	enemy = GetComponent(Enemy);
-	target = Waypoints.points[0];
-	randomPath = Random.Range(1, 4);
+    var pathChoice = Random.Range(0, Waypoints.totalPaths);
+    waypoints = Waypoints.paths[pathChoice].waypoints;
+    enemy = GetComponent(Enemy);
+    target = waypoints[0];
 }
 
-// Moves the enemy
+// Finds the next waypoint, and moves the enemy towards that point, so long as the enemy is not frozen
 function Update() {
-	var dir = new Vector3();
-	dir = target.position - transform.position;
-	transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
-
-	if (Vector3.Distance(transform.position, target.position) <= .5f) {
-		GetNextWaypoint();
-	}
+    var dir = new Vector3();
+    dir = target.position - transform.position;
+    transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+    enemy.distanceTravelled += enemy.speed * Time.deltaTime;
+    
+    if (Vector3.Distance(transform.position, target.position) <= .75f) {
+        GetNextWaypoint();
+    }
 }
 
-// Once the enemy reaches a new waypoint, searches for the next waypoint
+// When a waypoint is reached, access the next waypoint
 function GetNextWaypoint() {
-	if (wavepointIndex + (3 - randomPath)>= Waypoints.points.Length - 1) {
-		EndPath();
-		return;
-	}
-	if (wavepointIndex == 1) {
-		wavepointIndex += randomPath;
-		target = Waypoints.points[wavepointIndex];
-	} else {
-		wavepointIndex++;
-		target = Waypoints.points[wavepointIndex];
-	}
+    wavepointIndex++;
+    if (wavepointIndex >= waypoints.Length) {
+        EndPath();
+        return;
+    }
+    target = waypoints[wavepointIndex];
 }
 
-// The enemy has reached the end of his path, so it destroys itself
+// If the enemy reaches the end of the path, hurt the player and destroy itself
 function EndPath() {
-	LevelSelectWaveSpawner.EnemiesAlive--;
-	Destroy(gameObject);
+
+    LevelSelectWaveSpawner.EnemiesAlive--;
+    Destroy(gameObject);
 }

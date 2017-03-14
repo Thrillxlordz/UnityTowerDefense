@@ -12,7 +12,7 @@ function Update() {
 		return;
 	}
 	if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
-		Toggle();
+	    Toggle();
 	}
 }
 
@@ -40,7 +40,7 @@ public function Restart() {
 
 // Takes the user to the menu
 public function Menu() {
-	Toggle();
+    Toggle();
 	time.NormalTime();
 	sceneFader.FadeTo(menuSceneName);
 }

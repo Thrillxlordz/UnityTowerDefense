@@ -59,7 +59,7 @@ function Start() {
 	}
 
     // Sets the range indicator's size
-	rangeIndicator.transform.localScale = new Vector3(range*2 / this.transform.localScale.x, 1f, range*2 / this.transform.localScale.z);
+	rangeIndicator.transform.localScale = new Vector3(range*2 / this.transform.localScale.x, 1f/*range*2 / this.transform.localScale.y*/, range*2 / this.transform.localScale.z);
 	gameManager = GameManager.instance;
 }
 

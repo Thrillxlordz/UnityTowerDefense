@@ -9,6 +9,7 @@ public var time : TimeSpeed;
 public var freezeCooldown : float = 2f;
 public var timeToNextFreeze : float = freezeCooldown;
 public static var instance : GameManager;
+private var levelToUnlock : int;
 
 // Creates a static instance of itself, which is used in many other scripts
 function Awake() {
@@ -20,6 +21,8 @@ function Awake() {
 
 function Start() {
 	gameIsOver = false;
+	var levelName : String = SceneManager.GetActiveScene().name;
+	levelToUnlock = parseInt(levelName.Substring(5, 2)) + 1;
 }
 
 function Update () {
@@ -67,4 +70,10 @@ function UpdateRoundsRecord() {
     if (PlayerStats.Rounds > PlayerPrefs.GetInt(levelName, 0)) {
         PlayerPrefs.SetInt(levelName, PlayerStats.Rounds);
     }
+}
+
+function UpdateLevelRecord() {
+	if (PlayerPrefs.GetInt("levelReached") < levelToUnlock) {
+		PlayerPrefs.SetInt("levelReached", levelToUnlock);
+	}
 }

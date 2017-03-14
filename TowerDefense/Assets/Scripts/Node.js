@@ -35,9 +35,9 @@ public function GetBuildPosition() : Vector3 {
 function OnMouseDown() {
     /*
     ONLY USE THIS IF YOU NEED TO SCREENSHOT THE LEVEL
-    
+
     Debug.Log("Capturing");
-    Application.CaptureScreenshot("C:\\Users\\Nick\\Downloads\\Unity Coded Games\\UnityTowerDefense\\TowerDefense\\Assets\\LevelSelect\\_LevelImages\\Level01.png");
+    Application.CaptureScreenshot("C:\\Users\\Nick\\Downloads\\Unity Coded Games\\UnityTowerDefense\\TowerDefense\\Assets\\LevelSelect\\_LevelImages\\Level40.png");
 	*/
     if (EventSystem.current.IsPointerOverGameObject()) {
 		return;
@@ -67,7 +67,7 @@ function BuildTurret(blueprint : TurretBlueprint) {
 	PlayerStats.Money -= blueprint.cost;
 
     // Creates the turret
-	var _turret : GameObject = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+	var _turret : GameObject = Instantiate(blueprint.prefab, GetBuildPosition(), transform.rotation);//Quaternion.identity);
 	turret = _turret;
 
     // Disables the turrets range indicator
@@ -83,7 +83,7 @@ function BuildTurret(blueprint : TurretBlueprint) {
 
 // Hovers a turret on this node. The turret is inactive
 function HoverTurretOn(blueprint : TurretBlueprint) {
-	var _hoverTurret : GameObject = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+    var _hoverTurret : GameObject = Instantiate(blueprint.prefab, GetBuildPosition(), transform.rotation);//Quaternion.identity);
 	hoverTurret = _hoverTurret;
 	var material : Material = (hoverTurret.transform.GetChild(0).gameObject.GetComponent(Renderer) as Renderer).material;
 	if (PlayerStats.Money < blueprint.cost) {   // The player can't afford the turret, so it shows a red range indicator
