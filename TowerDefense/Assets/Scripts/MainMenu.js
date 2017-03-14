@@ -20,6 +20,7 @@ function Start() {
     var turretChoice : int = Random.Range(0, transform.GetChild(0).transform.childCount);
     displayedTurret = transform.GetChild(0).GetChild(turretChoice).gameObject;
     displayedTurret.SetActive(true);
+    cam.transform.rotation = Quaternion.Euler(0,360,0);
 }
 
 function Update() {
