@@ -3,9 +3,7 @@
 import UnityEngine.SceneManagement;
 
 public static var gameIsOver : boolean;
-public var gameOverUI : GameObject;
-public var completeLevelUI : GameObject;
-public var time : TimeSpeed;
+public var roundDisplay : RoundsSurvived;
 public var freezeCooldown : float = 2f;
 public var timeToNextFreeze : float = freezeCooldown;
 public static var instance : GameManager;
@@ -44,25 +42,26 @@ function Update () {
 
 // Ends the game, activating the game over UI
 function EndGame() {
-	time.NormalTime();
+	TimeSpeed.instance.NormalTime();
 	gameIsOver = true;
-	gameOverUI.SetActive(true);
+	roundDisplay.TurnOnGameOver();
 	UpdateRoundsRecord();
 }
 
 // Wins the level, activating the win level UI
 public function WinLevel() {
-	time.NormalTime();
+	TimeSpeed.instance.NormalTime();
 	gameIsOver = true;
-	completeLevelUI.SetActive(true);
+	roundDisplay.TurnOnCompleteLevel();
 	UpdateRoundsRecord();
 }
 
 public function PlayOn() {
     WaveSpawner.Enable();
     CameraController.Enable();
-    completeLevelUI.SetActive(false);
+    roundDisplay.TurnOffCompleteLevel();
     gameIsOver = false;
+    UpdateLevelRecord();
 }
 
 function UpdateRoundsRecord() {
@@ -70,6 +69,13 @@ function UpdateRoundsRecord() {
     if (PlayerStats.Rounds > PlayerPrefs.GetInt(levelName, 0)) {
         PlayerPrefs.SetInt(levelName, PlayerStats.Rounds);
     }
+}
+
+function UpdateMoneyRecord() {
+	var levelName : String = SceneManager.GetActiveScene().name;
+	if (100000 - PlayerStats.Money < PlayerPrefs.GetInt(levelName, 100000)) {
+		PlayerPrefs.SetInt(levelName, 100000 - PlayerStats.Money);
+	}
 }
 
 function UpdateLevelRecord() {

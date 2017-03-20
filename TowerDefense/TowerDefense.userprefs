@@ -2,14 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Node.js">
     <Files>
-      <File FileName="Assets\Scripts\MainMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Node.js" Line="38" Column="5" />
-      <File FileName="Assets\Scripts\Waypoints.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyMovement.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\User Interface\GameOver.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\User Interface\CompleteLevel.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WaveSpawner.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Node.js" Line="43" Column="7" />
+      <File FileName="Assets\Scripts\GameManager.js" Line="78" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

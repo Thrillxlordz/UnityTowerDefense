@@ -4,9 +4,11 @@ import UnityEngine.SceneManagement;
 
 public var img : UnityEngine.UI.Image;
 public var curve : AnimationCurve;
+public static var instance : SceneFader;
 
 // Begin each scene with a fade in animation
 function Start() {
+	instance = this;
 	StartCoroutine(FadeIn());
 }
 

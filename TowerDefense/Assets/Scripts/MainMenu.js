@@ -3,8 +3,6 @@ import UnityEngine.SceneManagement;
 
 public var levelToLoad : String = "MainLevel";
 
-public var sceneFader : SceneFader;
-
 public var cam : GameObject;
 
 public var shopPanel : GameObject;
@@ -23,6 +21,9 @@ function Start() {
 }
 
 function Update() {
+	if (Input.GetButtonDown("Jump")) {
+		PlayerPrefs.SetInt("levelReached", 64);
+	}
 	if (Quaternion.Angle(cam.transform.rotation, Quaternion.Euler(shopDirection)) < 60f) {
 		shopPanel.gameObject.SetActive(true);
 	} else {
@@ -45,7 +46,7 @@ function Update() {
 
 // Takes the player to the level select screen
 public function Play() {
-    sceneFader.FadeTo(levelToLoad);
+    SceneFader.instance.FadeTo(levelToLoad);
 }
 
 // Exits the application

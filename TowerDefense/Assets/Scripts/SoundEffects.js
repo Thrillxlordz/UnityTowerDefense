@@ -3,18 +3,22 @@
 /* This file contains all of the sounds that the game will want to play */
 
 public var buttonClick : AudioSource;
-public var backgroundMusic : AudioSource;
+public var mainMenuSound : AudioSource;
+public var levelSound : AudioSource;
 public static var instance : SoundEffects;
-private var muted : boolean = false;
 
 function Start() {
     instance = this;
-    PlaySound(backgroundMusic);
-
+    if (SceneManager.GetActiveScene().name == "MainMenu") {
+    	PlaySound(mainMenuSound);
+    } else if (SceneManager.GetActiveScene().name == "LevelSelect") {
+    	PlaySound(mainMenuSound);
+    } else {
+    	PlaySound(levelSound);
+    }
 }
 
 public function ButtonClick(){
-    //var audio : AudioSource = Instantiate(Resources.Load("Music\\Button Click",GameObject).GetComponent(AudioSource));
     PlaySound(buttonClick);
 }
 
@@ -34,7 +38,5 @@ public function SetVolume(volumeLevel : float){
 }
 
 private function PlaySound(audioSource : AudioSource){
-    if (!muted){
-        audioSource.Play();
-    }
+    audioSource.Play();
 }

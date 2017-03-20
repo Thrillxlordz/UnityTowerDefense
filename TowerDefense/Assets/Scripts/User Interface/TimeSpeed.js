@@ -4,9 +4,11 @@ public var pause : UnityEngine.UI.Image;
 public var halfTime : UnityEngine.UI.Image;
 public var normalTime : UnityEngine.UI.Image;
 public var doubleTime : UnityEngine.UI.Image;
+public static var instance : TimeSpeed;
 
 // Starts the game paused
 function Start() {
+	instance = this;
 	pause.color.a = 1;
 	halfTime.color.a = 0;
 	normalTime.color.a = 0;

@@ -1,9 +1,7 @@
 ﻿#pragma strict
 
 public var ui : GameObject;
-public var sceneFader : SceneFader;
 public var menuSceneName : String = "MainMenu";
-public var time : TimeSpeed;
 private var t : float = 1f;
 
 // If the game is not over, and the user presses "escape" or "p", pause the game
@@ -21,26 +19,27 @@ public function Toggle() {
 	ui.SetActive(!ui.activeSelf);
 	if (ui.activeSelf) {
 		t = Time.timeScale;
-		time.Pause();
+		TimeSpeed.instance.Pause();
 	} else if (t == 0.5f) {
-		time.HalfTime();
+		TimeSpeed.instance.HalfTime();
 	} else if (t == 2f) {
-		time.DoubleTime();
+		TimeSpeed.instance.DoubleTime();
 	} else {
-		time.NormalTime();
+		TimeSpeed.instance.NormalTime();
 	}
 }
 
 // Restarts the current scene
 public function Restart() {
 	Toggle();
-	time.NormalTime();
-	sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+	TimeSpeed.instance.NormalTime();
+	SceneFader.instance.FadeTo(SceneManager.GetActiveScene().name);
+	//sceneFader.FadeTo(SceneManager.GetActiveScene().name);
 }
 
 // Takes the user to the menu
 public function Menu() {
     Toggle();
-	time.NormalTime();
-	sceneFader.FadeTo(menuSceneName);
+	TimeSpeed.instance.NormalTime();
+	SceneFader.instance.FadeTo(menuSceneName);
 }

@@ -24,6 +24,9 @@ function Start() {
 	rend = GetComponent(Renderer);
 	startColor = rend.material.color;
 	buildManager = BuildManager.instance;
+	/*
+	Time.timeScale = 0;
+	*/
 }
 
 // Returns where this node is, plus an offset
@@ -35,10 +38,10 @@ public function GetBuildPosition() : Vector3 {
 function OnMouseDown() {
     /*
     ONLY USE THIS IF YOU NEED TO SCREENSHOT THE LEVEL
-
     Debug.Log("Capturing");
-    Application.CaptureScreenshot("C:\\Users\\Nick\\Downloads\\Unity Coded Games\\UnityTowerDefense\\TowerDefense\\Assets\\LevelSelect\\_LevelImages\\Level40.png");
-	*/
+    Application.CaptureScreenshot("C:\\Users\\Nick\\Downloads\\Unity Coded Games\\UnityTowerDefense\\TowerDefense\\Assets\\LevelSelect\\_LevelImages\\Level26.png");
+    */
+	
     if (EventSystem.current.IsPointerOverGameObject()) {
 		return;
 	}

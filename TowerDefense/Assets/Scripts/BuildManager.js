@@ -33,9 +33,10 @@ public function CanBuild() : boolean {
 function Update() {
     if (Input.GetMouseButtonDown(1)) {
         // Right click has occured
-        hoveredNode.HoverTurretOff();
-        hoveredNode.rend.material.color = hoveredNode.startColor;
-        
+        if (hoveredNode != null) {
+        	hoveredNode.HoverTurretOff();
+        	hoveredNode.rend.material.color = hoveredNode.startColor;
+        }
         turretToBuild = null;
         DeselectNode();
     }
@@ -89,7 +90,7 @@ public function DeselectNode() {
     // Unselects the node, and disables the nodeUI and turret settings panels
 	selectedNode = null;
 	nodeUI.Hide();
-	turretSettings.gameObject.SetActive(false);
+	turretSettings.transform.Find("TurretSettings").gameObject.SetActive(false);
 }
 
 // Stores the players choice of a turret to build, and unselects the selected nodes

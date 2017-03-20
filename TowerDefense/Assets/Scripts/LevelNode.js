@@ -1,7 +1,6 @@
 ﻿#pragma strict
 
 public var levelNumber : int;
-public var sceneFader : SceneFader;
 private var levelReached : int;
 private var rend : Renderer;
 
@@ -39,7 +38,7 @@ public function OnMouseExit() {
 public function SelectLevel() {
     SoundEffects.instance.ButtonClick();
 	var scene : String = (levelNumber < 10) ? ("Level0" + levelNumber) : ("Level" + levelNumber);
-	sceneFader.FadeTo(scene);
+	SceneFader.instance.FadeTo(scene);
 	if (levelNumber >= 100) {
 	Debug.Log("Level number exceeded 100, go to the LevelNode script, and update the SelectLevel() function");
 	}
