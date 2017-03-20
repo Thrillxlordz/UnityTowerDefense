@@ -24,7 +24,7 @@ function Start() {
 }
 
 function Update() {
-	if (Quaternion.Angle(cam.transform.rotation, Quaternion.Euler(shopDirection)) < 60f) {
+	if (Quaternion.Angle(cam.transform.rotation, Quaternion.Euler(shopDirection)) < 10f) {
 		shopPanel.gameObject.SetActive(true);
 	} else {
 		shopPanel.gameObject.SetActive(false);
