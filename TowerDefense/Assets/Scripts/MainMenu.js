@@ -18,13 +18,15 @@ function Start() {
     var turretChoice : int = Random.Range(0, transform.GetChild(0).transform.childCount);
     displayedTurret = transform.GetChild(0).GetChild(turretChoice).gameObject;
     displayedTurret.SetActive(true);
+    cam.transform.rotation = Quaternion.Euler(0,360,0);
 }
 
 function Update() {
 	if (Input.GetButtonDown("Jump")) {
 		PlayerPrefs.SetInt("levelReached", 64);
 	}
-	if (Quaternion.Angle(cam.transform.rotation, Quaternion.Euler(shopDirection)) < 60f) {
+
+	if (Quaternion.Angle(cam.transform.rotation, Quaternion.Euler(shopDirection)) < 10f) {
 		shopPanel.gameObject.SetActive(true);
 	} else {
 		shopPanel.gameObject.SetActive(false);

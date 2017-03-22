@@ -1,9 +1,8 @@
 ﻿<Properties StartupItem="Assembly-UnityScript.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Node.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainMenu.js">
     <Files>
-      <File FileName="Assets\Scripts\Node.js" Line="43" Column="7" />
-      <File FileName="Assets\Scripts\GameManager.js" Line="78" Column="3" />
+      <File FileName="Assets\Scripts\MainMenu.js" Line="28" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
